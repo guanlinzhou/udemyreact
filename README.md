@@ -11,4 +11,7 @@
 Runs smoke test using 'npm test'
 
 
-tested responsiveness using Google Chrome.
+Tested responsiveness using Google Chrome.
+
+### Implementation
+This miniproject uses the 'react-bootstrap' package to create a form and track user inputs, updating state dynamically. Upon clicking 'verify', this app uses regex verification to check that the form is complete and valid.
