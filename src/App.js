@@ -142,5 +142,4 @@ class App extends Component {
   }
 }
 
-/* finished */
 export default App;
