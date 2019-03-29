@@ -54,11 +54,10 @@ class App extends Component {
       flag = true;
     }
 
-    // complicated url regex to validate URLs
-    // source: http://urlregex.com/
+    // uses url-regex package from npm to automate url regex validation
     let url = userData.url;
-    let urlRegex = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/;
-    if (!urlRegex.test(url)) {
+    let urlRegex = require('url-regex');
+    if (!urlRegex({exact: true, strict: false}).test(url)) {
       flag = true;
     }
 
