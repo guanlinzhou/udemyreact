@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, FormLabel, FormText } from "react-bootstrap";
 import "./App.css"
-// import FormContainer from "./containers/FormContainer";
 
 class App extends Component {
   constructor(props) {
@@ -32,32 +31,43 @@ class App extends Component {
   validate() {
     var flag = false;
     let userData = this.state;
+
+    /*
+      test name validity criteria:
+        1. letters Only
+        2. 3 <= name length <= 30
+    */
     let name = userData.name;
     if (name.length < 3 || name.length > 30 && (!/^[a-zA-Z ]+$/).test(name)) {
       flag = true;
     }
 
+    //  test email validity: check email formatting present
     let email = userData.email;
     if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       flag = true;
     }
 
+    // test phone number validity: 10 digits, 1st digit not 0 or 1
     let phone = userData.phone;
     if (!(/^\(?([2-9]{1})\)?([0-9]{9})$/).test(phone)) {
       flag = true;
     }
 
+    // complicated url regex to validate URLs
+    // source: http://urlregex.com/
     let url = userData.url;
-    let emailRegex = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/;
-    if (!emailRegex.test(url)) {
+    let urlRegex = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/;
+    if (!urlRegex.test(url)) {
       flag = true;
     }
 
+    //sets validation text for display at bottom of page
     if (flag === true) {
-      this.setState({validationtext: "Form is incomplete!"})
+      this.setState({validationtext: "Form is Incomplete!"})
     }
     else {
-      this.setState({validationtext: "Form is complete!"})
+      this.setState({validationtext: "Form is Complete!"})
     }
   }
 
@@ -68,6 +78,8 @@ class App extends Component {
             <br />
             <div className="main-form">
               <form onSubmit={this.handleSubmit}>
+              {/* renders form using react forms, grouping each label
+                and input field as one formGroup */}
                 <FormGroup controlId="name">
                   <FormLabel>Name</FormLabel>
                   <FormControl
