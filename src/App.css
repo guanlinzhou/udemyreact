@@ -70,6 +70,7 @@
   min-width: 200px;
 }
 
+/*controls disclaimer under email */
 .form-text {
   text-align: center;
   position: relative;
@@ -82,11 +83,4 @@
   padding-top: 15px;
   text-align: center;
   font-weight: 400;
-}
-
-.register-button {
-  padding: 0.5rem 3rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  border-radius: 0.3rem;
 }
