@@ -11,7 +11,7 @@ class App extends Component {
       phone:"",
       url:"",
       validationtext:""
-    }
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.validate = this.validate.bind(this);
@@ -25,7 +25,7 @@ class App extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.validate()
+    this.validate();
   }
 
   validate() {
@@ -63,14 +63,16 @@ class App extends Component {
 
     //sets validation text for display at bottom of page
     if (flag === true) {
-      this.setState({validationtext: "Form is Incomplete!"})
+      this.setState({validationtext: "Form is Incomplete!"});
     }
     else {
-      this.setState({validationtext: "Form is Complete!"})
+      this.setState({validationtext: "Form is Complete!"});
     }
   }
 
   render() {
+    // Styles button; I hate in-line styling too but react forced me to
+    const buttonStyle = {padding: '0.5rem 4rem', fontSize: '1rem', lineHeight: '1.5', borderRadius: '0.3rem'};
     return (
       <div className="contact-form">
             <h1 className="header"> Contact Form </h1>
@@ -80,22 +82,22 @@ class App extends Component {
               {/* renders form using react forms, grouping each label
                 and input field as one formGroup */}
                 <FormGroup controlId="name">
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Name:</FormLabel>
                   <FormControl
                     autoFocus
                     type="text"
                     value={this.state.name}
-                    placeholder="Enter your Full Name"
+                    placeholder="Enter your name"
                     onChange={this.handleChange}
                   />
                 </FormGroup>
                 <FormGroup controlId="email">
-                  <FormLabel>Email </FormLabel>
+                  <FormLabel>Email: </FormLabel>
                   <FormControl
                     autoFocus
                     type="text"
                     value={this.state.email}
-                    placeholder="Enter your email address"
+                    placeholder="Enter your email"
                     onChange={this.handleChange}
                   />
                 </FormGroup>
@@ -103,7 +105,7 @@ class App extends Component {
                   We'll never share your email with anyone else.
                 </FormText>
                 <FormGroup controlId="phone">
-                  <FormLabel>Phone </FormLabel>
+                  <FormLabel>Phone: </FormLabel>
                   <FormControl
                     autoFocus
                     type="number"
@@ -113,7 +115,7 @@ class App extends Component {
                   />
                 </FormGroup>
                 <FormGroup controlId="url">
-                  <FormLabel>Blog URL </FormLabel>
+                  <FormLabel>Blog URL: </FormLabel>
                   <FormControl
                     autoFocus
                     type="text"
@@ -126,8 +128,8 @@ class App extends Component {
                 <Button
                   variant="success"
                   className="register-button"
-                  size="lg"
                   type="submit"
+                  style={buttonStyle}
                 >
                   Verify
                 </Button>
