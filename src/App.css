@@ -55,13 +55,26 @@
 
 /* uniformly sizes labels such that inputs are aligned */
 .form-label {
-  padding-right: 20px;
+  margin-right: 20px;
   display: inline-block;
   float: left;
   clear: left;
-  width: 150px;
-  text-align: left;
+  width: 130px;
+  text-align: right;
   font-size: 20px;
+}
+
+/* controls input width while also preserving a minimum for responsiveness */
+.form-control {
+  max-width: 40%;
+  min-width: 200px;
+}
+
+.form-text {
+  text-align: center;
+  position: relative;
+  left:-6.5%;
+  top:-10px;
 }
 
 /* centers bottom complete/incomplete message */
@@ -69,4 +82,11 @@
   padding-top: 15px;
   text-align: center;
   font-weight: 400;
+}
+
+.register-button {
+  padding: 0.5rem 3rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.3rem;
 }
